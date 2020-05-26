@@ -1,15 +1,12 @@
-import os
-os.environ['LD_PRELOAD'] = "/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0"
-
 import cv2
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
+fourcc = cv2.VideoWriter_fourcc('F', 'M', 'P', '4')
 
 out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 320))
 
-for i in range(150):
+for i in range(30):
     if not (cap.isOpened()):
         break
 
@@ -20,3 +17,6 @@ for i in range(150):
         break
 
 cap.release()
+out.release()
+cv2.destroyAllwindows()
+
